@@ -1,0 +1,39 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33627.172
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "DriverDB", "DriverDB\DriverDB.sqlproj", "{017B9069-D95C-490B-98BA-E6E4C3AD9BB5}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataAccess", "DataAccess\DataAccess.csproj", "{FCA40AD5-9FEA-4D91-B1DA-A48EA659C487}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MinimalDriverAPI", "MinimalDriverAPI\MinimalDriverAPI.csproj", "{820D5B78-983F-4E29-8E3D-EED23C0899B1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{017B9069-D95C-490B-98BA-E6E4C3AD9BB5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{017B9069-D95C-490B-98BA-E6E4C3AD9BB5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{017B9069-D95C-490B-98BA-E6E4C3AD9BB5}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{017B9069-D95C-490B-98BA-E6E4C3AD9BB5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{017B9069-D95C-490B-98BA-E6E4C3AD9BB5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{017B9069-D95C-490B-98BA-E6E4C3AD9BB5}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{FCA40AD5-9FEA-4D91-B1DA-A48EA659C487}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FCA40AD5-9FEA-4D91-B1DA-A48EA659C487}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FCA40AD5-9FEA-4D91-B1DA-A48EA659C487}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FCA40AD5-9FEA-4D91-B1DA-A48EA659C487}.Release|Any CPU.Build.0 = Release|Any CPU
+		{820D5B78-983F-4E29-8E3D-EED23C0899B1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{820D5B78-983F-4E29-8E3D-EED23C0899B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{820D5B78-983F-4E29-8E3D-EED23C0899B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{820D5B78-983F-4E29-8E3D-EED23C0899B1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {24593FF3-AF1B-4BD2-BC6B-2C2134CF7A24}
+	EndGlobalSection
+EndGlobal
