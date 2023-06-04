@@ -21,7 +21,7 @@ public class DriverData : IDriverData
         return results.FirstOrDefault();
     }
 
-    public Task InsertDriver(DriverModel driver) => _db.SaveData("dbo.spDriver_Insert", new { driver.FirstName, driver.LastName });
+    public Task InsertDriver(DriverModel driver) => _db.SaveData("dbo.spDriver_Insert", new { driver.FirstName, driver.LastName, driver.DateOfBirth, driver.DrivingLicenceNumber });
 
     public Task UpdateDriver(DriverModel driver) => _db.SaveData("dbo.spDriver_Update", driver);
 
