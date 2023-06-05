@@ -2,5 +2,5 @@
 
 AS
 begin
-	SELECT Id, FirstName, LastName FROM dbo.Driver;
+	SELECT * FROM dbo.Driver;
 end
