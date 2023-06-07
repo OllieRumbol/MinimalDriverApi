@@ -84,6 +84,7 @@
     <Build Include="dbo\StoredProcedures\Schedule\spSchedule_GetAll.sql" />
     <Build Include="dbo\StoredProcedures\Schedule\spSchedule_Insert.sql" />
     <Build Include="dbo\StoredProcedures\Shared\spDriverVehicleSchedule_GetAll.sql" />
+    <Build Include="dbo\StoredProcedures\Shared\spDriverVehicleSchedule_GetAll2.sql" />
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="dbo\Script.PostDeployment.sql" />

@@ -36,4 +36,9 @@ public class SqlDataAccess : ISqlDataAccess
 
         await connection.ExecuteAsync(storedProcedure, parameters, commandType: CommandType.StoredProcedure);
     }
+
+    public SqlConnection GetConnection(string connectionId = "Default")
+    {
+        return new SqlConnection(_config.GetConnectionString(connectionId));
+    }
 }
