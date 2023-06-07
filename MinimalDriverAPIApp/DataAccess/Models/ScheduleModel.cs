@@ -1,5 +1,4 @@
-﻿
-namespace DataAccess.Models;
+﻿namespace DataAccess.Models;
 
 public class ScheduleModel
 {
@@ -9,7 +8,7 @@ public class ScheduleModel
 
     public DateTime EndDateTime { get; set; }
 
-    public DriverModel Driver { get; set; }
+    public int DriverId { get; set; }
 
-    public VehicleModel Vehicle { get; set; }
+    public int VehicleId { get; set; }
 }

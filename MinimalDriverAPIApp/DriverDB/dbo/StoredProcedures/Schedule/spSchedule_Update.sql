@@ -1,13 +1,12 @@
-﻿CREATE PROCEDURE [dbo].[spVehicle_Update]
+﻿CREATE PROCEDURE [dbo].[spSchedule_Update]
 	@Id int,
-	@Registration nvarchar(10),
-	@Miles int,
-	@Make nvarchar(50),
-	@Model nvarchar(50),
-	@Colour nvarchar(50)
+	@StartDateTime DateTime,
+	@EndDateTime DateTime,
+	@DriverId int,
+	@VehicleId int
 AS
 begin
-	UPDATE dbo.Vehicle
-	SET Registration = @Registration, Miles = @Miles, Make = @Make, Model = @Model, Colour = @Colour
+	UPDATE dbo.Schedule
+	SET StartDateTime = @StartDateTime, EndDateTime = @EndDateTime, DriverId = @DriverId, VehicleId = @VehicleId
 	WHERE Id = @Id
 end

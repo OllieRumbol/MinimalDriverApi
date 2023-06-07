@@ -13,15 +13,36 @@ public class AllData : IAllData
     {
         _db = db;
     }
-    public async Task<AllModel> GetAll()
+
+    public async Task<FullSchedule?> GetFullSchedule()
     {
         using IDbConnection connection = _db.GetConnection();
 
-        var results = await connection.QueryMultipleAsync(
-                sql: "spDriverVehicleSchedule_GetAll2",
+        var results = await connection
+            .QueryAsync<DriverModel, ScheduleModel, VehicleModel, FullSchedule>(
+                sql: "spDriverVehicleSchedule_GetAll",
+                map: (driver, schedule, vehicle) => new FullSchedule
+                {
+                    Driver = driver,
+                    Schedule = schedule,
+                    Vehicle = vehicle
+                },
                 param: new { },
-                commandType: CommandType.StoredProcedure
-            );
+                commandType: CommandType.StoredProcedure);
+
+        return results.FirstOrDefault();
+    }
+
+    public async Task<AllModel> GetAll()
+    {
+        //var results = await _db.LoadMultipleData("spDriverVehicleSchedule_GetAll2", new { });
+
+        using IDbConnection connection = _db.GetConnection();
+
+        var results = await connection.QueryMultipleAsync(
+            "spDriverVehicleSchedule_GetAll2", new { },
+    commandType: CommandType.StoredProcedure);
+
 
         var drivers = results.Read<DriverModel>().ToList();
         var schedules = results.Read<ScheduleModel>().ToList();

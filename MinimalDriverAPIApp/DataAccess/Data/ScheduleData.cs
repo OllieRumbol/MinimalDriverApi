@@ -1,7 +1,5 @@
-﻿using Dapper;
-using DataAccess.DbAccess;
+﻿using DataAccess.DbAccess;
 using DataAccess.Models;
-using System.Data;
 
 namespace DataAccess.Data;
 
@@ -14,39 +12,18 @@ public class ScheduleData : IScheduleData
         _db = db;
     }
 
-    public async Task<ScheduleModel?> GetSchedules()
+    public Task<IEnumerable<ScheduleModel>> GetSchedules() => _db.LoadData<ScheduleModel, dynamic>("dbo.spSchedule_GetAll", new { });
+
+    public async Task<ScheduleModel?> GetSchedule(int id)
     {
-        using IDbConnection connection = _db.GetConnection();
-
-        var results = await connection
-            .QueryAsync<DriverModel, ScheduleModel, VehicleModel, ScheduleModel>(
-                sql: "spDriverVehicleSchedule_GetAll",
-                map: (driver, schedule, vehicle) =>
-                {
-                    schedule.Driver = new DriverModel
-                    {
-                        Id = driver.Id,
-                        FirstName = driver.FirstName,
-                        LastName = driver.LastName,
-                        DateOfBirth = driver.DateOfBirth,
-                        DrivingLicenceNumber = driver.DrivingLicenceNumber
-                    };
-
-                    schedule.Vehicle = new VehicleModel
-                    {
-                        Id = vehicle.Id,
-                        Registration = vehicle.Registration,
-                        Miles = vehicle.Miles,
-                        Make = vehicle.Make,
-                        Model = vehicle.Model,
-                        Colour = vehicle.Colour,
-                    };
-
-                    return schedule;
-                },
-                param: new { },
-                commandType: CommandType.StoredProcedure);
+        var results = await _db.LoadData<ScheduleModel, dynamic>("dbo.spSchedule_Get", new { Id = id });
 
         return results.FirstOrDefault();
     }
+
+    public Task InsertSchedule(ScheduleModel schedule) => _db.SaveData("dbo.spSchedule_Insert", new { schedule.StartDateTime, schedule.EndDateTime, schedule.DriverId, schedule.VehicleId });
+
+    public Task UpdateSchedule(ScheduleModel schedule) => _db.SaveData("dbo.spSchedule_Update", schedule);
+
+    public Task DeleteSchedule(int id) => _db.SaveData("dbo.spSchedule_Delete", new { Id = id });
 }

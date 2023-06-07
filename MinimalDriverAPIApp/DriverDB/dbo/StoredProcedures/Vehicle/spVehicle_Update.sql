@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE [dbo].[spSchedule_Update]
+﻿CREATE PROCEDURE [dbo].[spVehicle_Update]
 	@Id int,
 	@StartDateTime DateTime,
 	@EndDateTime DateTime,
