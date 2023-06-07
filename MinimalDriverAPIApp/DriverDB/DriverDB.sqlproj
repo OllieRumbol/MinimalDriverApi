@@ -59,14 +59,31 @@
     <Folder Include="dbo" />
     <Folder Include="dbo\Tables" />
     <Folder Include="dbo\StoredProcedures" />
+    <Folder Include="dbo\StoredProcedures\Driver" />
+    <Folder Include="dbo\StoredProcedures\Vehicle" />
+    <Folder Include="dbo\StoredProcedures\Shared" />
+    <Folder Include="dbo\StoredProcedures\Schedule" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="dbo\Tables\Driver.sql" />
-    <Build Include="dbo\StoredProcedures\spDriver_GetAll.sql" />
-    <Build Include="dbo\StoredProcedures\spDriver_Get.sql" />
-    <Build Include="dbo\StoredProcedures\spDriver_Delete.sql" />
-    <Build Include="dbo\StoredProcedures\spDriver_Insert.sql" />
-    <Build Include="dbo\StoredProcedures\spDriver_Update.sql" />
+    <Build Include="dbo\StoredProcedures\Driver\spDriver_Update.sql" />
+    <Build Include="dbo\StoredProcedures\Driver\spDriver_Delete.sql" />
+    <Build Include="dbo\StoredProcedures\Driver\spDriver_Get.sql" />
+    <Build Include="dbo\StoredProcedures\Driver\spDriver_GetAll.sql" />
+    <Build Include="dbo\StoredProcedures\Driver\spDriver_Insert.sql" />
+    <Build Include="dbo\Tables\Vehicle.sql" />
+    <Build Include="dbo\StoredProcedures\Vehicle\spVehicle_Update.sql" />
+    <Build Include="dbo\StoredProcedures\Vehicle\spVehicle_Delete.sql" />
+    <Build Include="dbo\StoredProcedures\Vehicle\spVehicle_Get.sql" />
+    <Build Include="dbo\StoredProcedures\Vehicle\spVehicle_GetAll.sql" />
+    <Build Include="dbo\StoredProcedures\Vehicle\spVehicle_Insert.sql" />
+    <Build Include="dbo\Tables\Schedule.sql" />
+    <Build Include="dbo\StoredProcedures\Schedule\spSchedule_Update.sql" />
+    <Build Include="dbo\StoredProcedures\Schedule\spSchedule_Delete.sql" />
+    <Build Include="dbo\StoredProcedures\Schedule\spSchedule_Get.sql" />
+    <Build Include="dbo\StoredProcedures\Schedule\spSchedule_GetAll.sql" />
+    <Build Include="dbo\StoredProcedures\Schedule\spSchedule_Insert.sql" />
+    <Build Include="dbo\StoredProcedures\Shared\spDriverVehicleSchedule_GetAll.sql" />
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="dbo\Script.PostDeployment.sql" />
