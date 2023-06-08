@@ -6,6 +6,9 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddSingleton<ISqlDataAccess, SqlDataAccess>();
 builder.Services.AddSingleton<IDriverData, DriverData>();
+builder.Services.AddSingleton<IVehicleData, VehicleData>();
+builder.Services.AddSingleton<IScheduleData, ScheduleData>();
+builder.Services.AddSingleton<IAllData, AllData>();
 
 var app = builder.Build();
 
