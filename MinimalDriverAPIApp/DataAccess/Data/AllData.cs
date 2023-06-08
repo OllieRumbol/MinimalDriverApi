@@ -35,14 +35,9 @@ public class AllData : IAllData
 
     public async Task<AllModel> GetAll()
     {
-        //var results = await _db.LoadMultipleData("spDriverVehicleSchedule_GetAll2", new { });
-
         using IDbConnection connection = _db.GetConnection();
 
-        var results = await connection.QueryMultipleAsync(
-            "spDriverVehicleSchedule_GetAll2", new { },
-    commandType: CommandType.StoredProcedure);
-
+        var results = await connection.QueryMultipleAsync("spDriverVehicleSchedule_GetAll2", new { }, commandType: CommandType.StoredProcedure);
 
         var drivers = results.Read<DriverModel>().ToList();
         var schedules = results.Read<ScheduleModel>().ToList();
