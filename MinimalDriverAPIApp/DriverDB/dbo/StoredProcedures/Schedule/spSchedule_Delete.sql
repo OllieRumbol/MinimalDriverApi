@@ -4,5 +4,5 @@ AS
 begin
 	DELETE
 	FROM dbo.Schedule
-	WHERE Id = @id;
+	WHERE ScheduleId = @id;
 end

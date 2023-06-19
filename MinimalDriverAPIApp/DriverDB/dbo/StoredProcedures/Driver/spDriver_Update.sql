@@ -8,5 +8,5 @@ AS
 begin
 	UPDATE dbo.Driver
 	SET FirstName = @FirstName,  LastName = @LastName, DateOfBirth = @DateOfBirth, @DrivingLicenceNumber = @DrivingLicenceNumber
-	WHERE Id = @Id
+	WHERE DriverId = @Id
 end

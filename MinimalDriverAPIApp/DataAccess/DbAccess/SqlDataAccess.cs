@@ -14,22 +14,22 @@ public class SqlDataAccess : ISqlDataAccess
         _config = config;
     }
 
-    public async Task<IEnumerable<T>> LoadData<T, U>(
+    public async Task<IEnumerable<TReturnedDataModel>> LoadData<TReturnedDataModel, TParameters>(
         string storedProcedure,
-        U parameters,
+        TParameters parameters,
         string connectionId = "Default")
     {
         using IDbConnection connection = new SqlConnection(_config.GetConnectionString(connectionId));
 
-        return await connection.QueryAsync<T>(
+        return await connection.QueryAsync<TReturnedDataModel>(
             storedProcedure,
             parameters,
             commandType: CommandType.StoredProcedure);
     }
 
-    public async Task SaveData<T>(
+    public async Task SaveData<TParameters>(
         string storedProcedure,
-        T parameters,
+        TParameters parameters,
         string connectionId = "Default")
     {
         using IDbConnection connection = new SqlConnection(_config.GetConnectionString(connectionId));

@@ -2,5 +2,6 @@
 
 AS
 begin
-	SELECT * FROM dbo.Schedule;
+	SELECT ScheduleId, StartDateTime, EndDateTime, DriverId, VehicleId 
+	FROM dbo.Schedule;
 end

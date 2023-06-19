@@ -2,7 +2,7 @@
 
 public class ScheduleModel
 {
-    public int Id { get; set; }
+    public int ScheduleId { get; set; }
 
     public DateTime StartDateTime { get; set; }
 

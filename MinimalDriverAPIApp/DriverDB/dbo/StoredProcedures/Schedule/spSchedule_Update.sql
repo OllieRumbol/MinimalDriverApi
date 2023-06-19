@@ -8,5 +8,5 @@ AS
 begin
 	UPDATE dbo.Schedule
 	SET StartDateTime = @StartDateTime, EndDateTime = @EndDateTime, DriverId = @DriverId, VehicleId = @VehicleId
-	WHERE Id = @Id
+	WHERE ScheduleId = @Id
 end

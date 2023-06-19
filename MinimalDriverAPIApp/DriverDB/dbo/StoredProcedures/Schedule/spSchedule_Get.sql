@@ -2,8 +2,8 @@
 	@Id int
 AS
 begin
-	SELECT * 
+	SELECT ScheduleId, StartDateTime, EndDateTime, DriverId, VehicleId
 	FROM dbo.Schedule
-	WHERE Id = @id;
+	WHERE ScheduleId = @id;
 end
 
