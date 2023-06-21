@@ -27,6 +27,7 @@ public class AllData : IAllData
                     Schedule = schedule,
                     Vehicle = vehicle
                 },
+                splitOn: "ScheduleId,DriverId",
                 param: new { },
                 commandType: CommandType.StoredProcedure);
 

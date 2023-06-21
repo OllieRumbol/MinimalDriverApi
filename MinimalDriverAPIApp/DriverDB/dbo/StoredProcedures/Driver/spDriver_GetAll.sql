@@ -2,5 +2,6 @@
 
 AS
 begin
-	SELECT * FROM dbo.Driver;
+	SELECT DriverId, FirstName, LastName, DateOfBirth, DrivingLicenceNumber
+	FROM dbo.Driver;
 end

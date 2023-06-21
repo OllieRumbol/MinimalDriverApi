@@ -92,4 +92,7 @@
   <ItemGroup>
     <None Include="DriverDB.publish.xml" />
   </ItemGroup>
+  <ItemGroup>
+    <RefactorLog Include="DriverDB.refactorlog" />
+  </ItemGroup>
 </Project>

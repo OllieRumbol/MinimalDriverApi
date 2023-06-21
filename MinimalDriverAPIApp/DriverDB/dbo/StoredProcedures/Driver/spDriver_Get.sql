@@ -2,8 +2,8 @@
 	@Id int
 AS
 begin
-	SELECT * 
+	SELECT DriverId, FirstName, LastName, DateOfBirth, DrivingLicenceNumber
 	FROM dbo.Driver
-	WHERE Id = @id;
+	WHERE DriverId = @id;
 end
 

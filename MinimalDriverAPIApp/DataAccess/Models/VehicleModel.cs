@@ -2,7 +2,7 @@
 
 public class VehicleModel
 {
-    public int Id { get; set; } 
+    public int VehicleId { get; set; } 
 
     public string Registration { get; set; }
 

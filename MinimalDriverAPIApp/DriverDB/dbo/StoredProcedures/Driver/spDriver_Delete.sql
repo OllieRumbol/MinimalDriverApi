@@ -4,5 +4,5 @@ AS
 begin
 	DELETE
 	FROM dbo.Driver
-	WHERE Id = @id;
+	WHERE DriverId = @id;
 end

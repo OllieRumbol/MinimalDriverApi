@@ -2,5 +2,6 @@
 
 AS
 begin
-	SELECT * FROM dbo.Vehicle;
+	SELECT VehicleId, Registration, Miles, Make, Model, Colour
+	FROM dbo.Vehicle;
 end

@@ -2,8 +2,8 @@
 	@Id int
 AS
 begin
-	SELECT * 
+	SELECT VehicleId, Registration, Miles, Make, Model, Colour 
 	FROM dbo.Vehicle
-	WHERE Id = @id;
+	WHERE VehicleId = @id;
 end
 
