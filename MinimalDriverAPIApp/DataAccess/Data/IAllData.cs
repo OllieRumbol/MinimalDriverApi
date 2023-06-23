@@ -1,10 +1,10 @@
-﻿using DataAccess.Models;
+﻿using MinimalDriverModels;
 
-namespace DataAccess.Data
+namespace MinimalDriverDataAccess.Data
 {
     public interface IAllData
     {
         Task<AllModel> GetAll();
-        Task<FullSchedule?> GetFullSchedule();
+        Task<List<FullSchedule>> GetFullSchedule();
     }
 }

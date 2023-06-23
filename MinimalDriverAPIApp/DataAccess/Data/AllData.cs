@@ -1,9 +1,9 @@
 ﻿using Dapper;
-using DataAccess.DbAccess;
-using DataAccess.Models;
+using MinimalDriverDataAccess.DbAccess;
+using MinimalDriverModels;
 using System.Data;
 
-namespace DataAccess.Data;
+namespace MinimalDriverDataAccess.Data;
 
 public class AllData : IAllData
 {
@@ -14,24 +14,20 @@ public class AllData : IAllData
         _db = db;
     }
 
-    public async Task<FullSchedule?> GetFullSchedule()
+    public async Task<List<FullSchedule>> GetFullSchedule()
     {
-        using IDbConnection connection = _db.GetConnection();
+        var results = await _db.LoadMultipleObjectData<DriverModel, ScheduleModel, VehicleModel, FullSchedule, dynamic>(
+            storedProcedure: "spDriverVehicleSchedule_GetAll",
+            parameters: new { },
+            map: (driver, schedule, vehicle) => new FullSchedule
+            {
+                Driver = driver,
+                Schedule = schedule,
+                Vehicle = vehicle
+            },
+            splitOn: "ScheduleId,DriverId");
 
-        var results = await connection
-            .QueryAsync<DriverModel, ScheduleModel, VehicleModel, FullSchedule>(
-                sql: "spDriverVehicleSchedule_GetAll",
-                map: (driver, schedule, vehicle) => new FullSchedule
-                {
-                    Driver = driver,
-                    Schedule = schedule,
-                    Vehicle = vehicle
-                },
-                splitOn: "ScheduleId,DriverId",
-                param: new { },
-                commandType: CommandType.StoredProcedure);
-
-        return results.FirstOrDefault();
+        return results.ToList();
     }
 
     public async Task<AllModel> GetAll()
