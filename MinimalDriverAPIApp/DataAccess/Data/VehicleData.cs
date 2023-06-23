@@ -1,7 +1,7 @@
-﻿using DataAccess.DbAccess;
-using DataAccess.Models;
+﻿using MinimalDriverDataAccess.DbAccess;
+using MinimalDriverModels;
 
-namespace DataAccess.Data;
+namespace MinimalDriverDataAccess.Data;
 
 public class VehicleData : IVehicleData
 {
