@@ -1,7 +1,5 @@
-﻿using Dapper;
-using MinimalDriverDataAccess.DbAccess;
+﻿using MinimalDriverDataAccess.DbAccess;
 using MinimalDriverModels;
-using System.Data;
 
 namespace MinimalDriverDataAccess.Data;
 
@@ -32,19 +30,18 @@ public class AllData : IAllData
 
     public async Task<AllModel> GetAll()
     {
-        using IDbConnection connection = _db.GetConnection();
+        var allModel = new AllModel();
 
-        var results = await connection.QueryMultipleAsync("spDriverVehicleSchedule_GetAll2", new { }, commandType: CommandType.StoredProcedure);
+        _db.LoadMultipleDataSets(
+            storedProcedure: "spDriverVehicleSchedule_GetAll2",
+            parameters: new { },
+            (reader) =>
+            {
+                allModel.Drivers = reader.Read<DriverModel>().ToList();
+                allModel.Schedules = reader.Read<ScheduleModel>().ToList();
+                allModel.Vehicles = reader.Read<VehicleModel>().ToList();
+            });
 
-        var drivers = results.Read<DriverModel>().ToList();
-        var schedules = results.Read<ScheduleModel>().ToList();
-        var vehicles = results.Read<VehicleModel>().ToList();
-
-        return new AllModel
-        {
-            Drivers = drivers,
-            Schedules = schedules,
-            Vehicles = vehicles
-        };
+        return allModel;
     }
 }
