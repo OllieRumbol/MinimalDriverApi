@@ -1,6 +1,6 @@
-﻿using DataAccess.Models;
+﻿using MinimalDriverModels;
 
-namespace DataAccess.Data;
+namespace MinimalDriverDataAccess.Data;
 
 public interface IDriverData
 {

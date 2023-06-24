@@ -1,5 +1,6 @@
-using DataAccess.DbAccess;
 using MinimalDriverAPI;
+using MinimalDriverDataAccess.Data;
+using MinimalDriverDataAccess.DbAccess;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddEndpointsApiExplorer();

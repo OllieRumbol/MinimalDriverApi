@@ -5,9 +5,11 @@ VisualStudioVersion = 17.5.33627.172
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "DriverDB", "DriverDB\DriverDB.sqlproj", "{017B9069-D95C-490B-98BA-E6E4C3AD9BB5}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataAccess", "DataAccess\DataAccess.csproj", "{FCA40AD5-9FEA-4D91-B1DA-A48EA659C487}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MinimalDriverDataAccess", "DataAccess\MinimalDriverDataAccess.csproj", "{FCA40AD5-9FEA-4D91-B1DA-A48EA659C487}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MinimalDriverAPI", "MinimalDriverAPI\MinimalDriverAPI.csproj", "{820D5B78-983F-4E29-8E3D-EED23C0899B1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MinimalDriverModels", "MinimalDriverModels\MinimalDriverModels.csproj", "{C145B5E1-BF4D-4668-B3A3-822A356A90B2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,6 +31,10 @@ Global
 		{820D5B78-983F-4E29-8E3D-EED23C0899B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{820D5B78-983F-4E29-8E3D-EED23C0899B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{820D5B78-983F-4E29-8E3D-EED23C0899B1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C145B5E1-BF4D-4668-B3A3-822A356A90B2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C145B5E1-BF4D-4668-B3A3-822A356A90B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C145B5E1-BF4D-4668-B3A3-822A356A90B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C145B5E1-BF4D-4668-B3A3-822A356A90B2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
