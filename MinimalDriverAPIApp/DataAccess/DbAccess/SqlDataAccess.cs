@@ -157,8 +157,19 @@ public class SqlDataAccess : ISqlDataAccess
         return results;
     }
 
-    public SqlConnection GetConnection(string connectionId = "Default")
+    public void LoadMultipleDataSets<TParameters>(
+        string storedProcedure,
+        TParameters parameters,
+        Action<SqlMapper.GridReader> callback,
+        string connectionId = "Default")
     {
-        return new SqlConnection(_config.GetConnectionString(connectionId));
+        using IDbConnection connection = new SqlConnection(_config.GetConnectionString(connectionId));
+
+        var results = connection.QueryMultiple(
+            sql: storedProcedure,
+            param: parameters,
+            commandType: CommandType.StoredProcedure);
+
+        callback(results);
     }
 }
