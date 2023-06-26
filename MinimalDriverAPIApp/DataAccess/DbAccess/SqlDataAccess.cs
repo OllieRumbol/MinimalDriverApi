@@ -12,6 +12,7 @@ public class SqlDataAccess : ISqlDataAccess
     public SqlDataAccess(IConfiguration config)
     {
         _config = config;
+        Dapper.DefaultTypeMap.MatchNamesWithUnderscores = true;
     }
 
     public async Task<IEnumerable<TReturnedDataModel>> LoadData<TReturnedDataModel, TParameters>(

@@ -21,7 +21,7 @@ public class ScheduleData : IScheduleData
         return results.FirstOrDefault();
     }
 
-    public Task InsertSchedule(ScheduleModel schedule) => _db.SaveData("dbo.spSchedule_Insert", new { schedule.StartDateTime, schedule.EndDateTime, schedule.DriverId, schedule.VehicleId });
+    public Task InsertSchedule(ScheduleModel schedule) => _db.SaveData("dbo.spSchedule_Insert", new { schedule.StartDateTime, schedule.EndDateTime, schedule.DriverId, schedule.VehicleId, schedule.PriorityLevel });
 
     public Task UpdateSchedule(ScheduleModel schedule) => _db.SaveData("dbo.spSchedule_Update", schedule);
 

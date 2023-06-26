@@ -3,7 +3,7 @@ AS
 begin 
 	SELECT
 	dri.DriverId, dri.FirstName, dri.LastName, dri.DateOfBirth, dri.DrivingLicenceNumber,
-	sch.ScheduleId, sch.StartDateTime, sch.EndDateTime, sch.DriverId, sch.VehicleId,
+	sch.ScheduleId, sch.StartDateTime, sch.EndDateTime, sch.DriverId, sch.VehicleId, sch.Priority_Level,
 	veh.VehicleId, veh.Registration, veh.Miles, veh.Make, veh.Model, veh.Colour 
 	FROM dbo.Driver dri 
 	RIGHT JOIN dbo.Schedule sch on dri.DriverId = sch.DriverId 
