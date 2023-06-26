@@ -11,4 +11,6 @@ public class ScheduleModel
     public int DriverId { get; set; }
 
     public int VehicleId { get; set; }
+
+    public int PriorityLevel { get; set; }
 }

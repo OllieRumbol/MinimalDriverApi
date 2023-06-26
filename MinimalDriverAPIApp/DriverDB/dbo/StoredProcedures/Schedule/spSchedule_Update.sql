@@ -3,10 +3,11 @@
 	@StartDateTime DateTime,
 	@EndDateTime DateTime,
 	@DriverId int,
-	@VehicleId int
+	@VehicleId int,
+	@PriorityLevel int
 AS
 begin
 	UPDATE dbo.Schedule
-	SET StartDateTime = @StartDateTime, EndDateTime = @EndDateTime, DriverId = @DriverId, VehicleId = @VehicleId
+	SET StartDateTime = @StartDateTime, EndDateTime = @EndDateTime, DriverId = @DriverId, VehicleId = @VehicleId, Priority_Level = @PriorityLevel
 	WHERE ScheduleId = @Id
 end

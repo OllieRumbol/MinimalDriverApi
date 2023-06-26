@@ -2,6 +2,6 @@
 
 AS
 begin
-	SELECT ScheduleId, StartDateTime, EndDateTime, DriverId, VehicleId 
+	SELECT ScheduleId, StartDateTime, EndDateTime, DriverId, VehicleId, Priority_Level
 	FROM dbo.Schedule;
 end

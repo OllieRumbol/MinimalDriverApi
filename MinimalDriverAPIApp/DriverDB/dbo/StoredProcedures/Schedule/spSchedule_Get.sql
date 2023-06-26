@@ -2,7 +2,7 @@
 	@Id int
 AS
 begin
-	SELECT ScheduleId, StartDateTime, EndDateTime, DriverId, VehicleId
+	SELECT ScheduleId, StartDateTime, EndDateTime, DriverId, VehicleId, Priority_Level
 	FROM dbo.Schedule
 	WHERE ScheduleId = @id;
 end

@@ -17,6 +17,6 @@ end
 
 if not exists (select 1 from dbo.Schedule)
 begin
-	INSERT INTO dbo.Schedule (StartDateTime, EndDateTime, DriverId, VehicleId)
-	values ('2023-06-07 09:00:00', '2023-06-07 11:00:00', 1, 1)
+	INSERT INTO dbo.Schedule (StartDateTime, EndDateTime, DriverId, VehicleId, Priority_Level)
+	values ('2023-06-07 09:00:00', '2023-06-07 11:00:00', 1, 1, 8)
 end

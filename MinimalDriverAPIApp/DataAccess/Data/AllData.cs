@@ -23,7 +23,7 @@ public class AllData : IAllData
                 Schedule = schedule,
                 Vehicle = vehicle
             },
-            splitOn: "ScheduleId,DriverId");
+            splitOn: "ScheduleId,VehicleId");
 
         return results.ToList();
     }
