@@ -12,7 +12,7 @@ public class SqlDataAccess : ISqlDataAccess
     public SqlDataAccess(IConfiguration config)
     {
         _config = config;
-        Dapper.DefaultTypeMap.MatchNamesWithUnderscores = true;
+        DefaultTypeMap.MatchNamesWithUnderscores = true;
     }
 
     public async Task<IEnumerable<TReturnedDataModel>> LoadData<TReturnedDataModel, TParameters>(
@@ -158,7 +158,7 @@ public class SqlDataAccess : ISqlDataAccess
         return results;
     }
 
-    public void LoadMultipleDataSets<TParameters>(
+    public async Task LoadMultipleDataSets<TParameters>(
         string storedProcedure,
         TParameters parameters,
         Action<SqlMapper.GridReader> callback,
@@ -166,7 +166,7 @@ public class SqlDataAccess : ISqlDataAccess
     {
         using IDbConnection connection = new SqlConnection(_config.GetConnectionString(connectionId));
 
-        var results = connection.QueryMultiple(
+        var results = await connection.QueryMultipleAsync(
             sql: storedProcedure,
             param: parameters,
             commandType: CommandType.StoredProcedure);
