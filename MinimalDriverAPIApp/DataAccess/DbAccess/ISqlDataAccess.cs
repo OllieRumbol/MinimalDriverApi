@@ -5,7 +5,7 @@ namespace MinimalDriverDataAccess.DbAccess
     public interface ISqlDataAccess
     {
         Task<IEnumerable<TReturnedDataModel>> LoadData<TReturnedDataModel, TParameters>(string storedProcedure, TParameters parameters, string connectionId = "Default");
-        void LoadMultipleDataSets<TParameters>(string storedProcedure, TParameters parameters, Action<SqlMapper.GridReader> callback, string connectionId = "Default");
+        Task LoadMultipleDataSets<TParameters>(string storedProcedure, TParameters parameters, Action<SqlMapper.GridReader> callback, string connectionId = "Default");
         Task<IEnumerable<TReturnedDataModel>> LoadMultipleObjectData<TFirst, TSecond, TReturnedDataModel, TParameters>(string storedProcedure, TParameters parameters, Func<TFirst, TSecond, TReturnedDataModel> map, string connectionId = "Default", string splitOn = "Id");
         Task<IEnumerable<TReturnedDataModel>> LoadMultipleObjectData<TFirst, TSecond, TThird, TForth, TFifth, TReturnedDataModel, TParameters>(string storedProcedure, TParameters parameters, Func<TFirst, TSecond, TThird, TForth, TFifth, TReturnedDataModel> map, string connectionId = "Default", string splitOn = "Id");
         Task<IEnumerable<TReturnedDataModel>> LoadMultipleObjectData<TFirst, TSecond, TThird, TForth, TFifth, TSixth, TReturnedDataModel, TParameters>(string storedProcedure, TParameters parameters, Func<TFirst, TSecond, TThird, TForth, TFifth, TSixth, TReturnedDataModel> map, string connectionId = "Default", string splitOn = "Id");

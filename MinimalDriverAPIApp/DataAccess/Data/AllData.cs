@@ -32,7 +32,7 @@ public class AllData : IAllData
     {
         var allModel = new AllModel();
 
-        _db.LoadMultipleDataSets(
+        await _db.LoadMultipleDataSets(
             storedProcedure: "spDriverVehicleSchedule_GetAll2",
             parameters: new { },
             (reader) =>
