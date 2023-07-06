@@ -46,7 +46,7 @@ public class DriverData : IDriverData
                         DriverId = key,
                         Vehicles = vehicles.Where(v => list.Contains(v.VehicleId)).ToList()
                     })
-                .ToDictionary(d => d.DriverId, d => d.Vehicles); ;
+                .ToDictionary(d => d.DriverId, d => d.Vehicles);
 
                 results = drivers.Select(d =>
                 {
