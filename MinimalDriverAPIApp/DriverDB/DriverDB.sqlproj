@@ -63,6 +63,7 @@
     <Folder Include="dbo\StoredProcedures\Vehicle" />
     <Folder Include="dbo\StoredProcedures\Shared" />
     <Folder Include="dbo\StoredProcedures\Schedule" />
+    <Folder Include="dbo\StoredProcedures\DriverToVehicle" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="dbo\Tables\Driver.sql" />
@@ -85,6 +86,8 @@
     <Build Include="dbo\StoredProcedures\Shared\spDriverVehicleSchedule_GetAll.sql" />
     <Build Include="dbo\StoredProcedures\Shared\spDriverVehicleSchedule_GetAll2.sql" />
     <Build Include="dbo\StoredProcedures\Schedule\spSchedule_Update.sql" />
+    <Build Include="dbo\Tables\DriverToVehicle.sql" />
+    <Build Include="dbo\StoredProcedures\DriverToVehicle\spDriverToVehicle_link.sql" />
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="dbo\Script.PostDeployment.sql" />

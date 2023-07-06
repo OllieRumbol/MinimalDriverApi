@@ -20,3 +20,12 @@ begin
 	INSERT INTO dbo.Schedule (StartDateTime, EndDateTime, DriverId, VehicleId, Priority_Level)
 	values ('2023-06-07 09:00:00', '2023-06-07 11:00:00', 1, 1, 8)
 end
+
+if not exists (select 1 from dbo.DriverToVehicle)
+begin
+	INSERT INTO dbo.DriverToVehicle(DriverId, VehicleId)
+	values (1,1),
+	(1,2),
+	(1,3),
+	(3,3)
+end

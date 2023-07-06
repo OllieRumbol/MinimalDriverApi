@@ -12,6 +12,7 @@ public static class Api
         app.MapPost("/Drivers", InsertDriver);
         app.MapPut("/Drivers", UpdateDriver);
         app.MapDelete("/Driver/{id}", DeleteDriver);
+        app.MapGet("/DriversLink", LinkDriver);
 
         app.MapGet("/Vehicles", GetVehicles);
         app.MapGet("/Vehicles/{id}", GetVehicle);
@@ -92,6 +93,18 @@ public static class Api
         {
             await data.DeleteDriver(id);
             return Results.Ok();
+        }
+        catch (Exception ex)
+        {
+            return Results.Problem(ex.Message);
+        }
+    }
+
+    private static async Task<IResult> LinkDriver(IDriverData data)
+    {
+        try
+        {
+            return Results.Ok(await data.LinkDrivers());
         }
         catch (Exception ex)
         {
