@@ -38,21 +38,19 @@ public class DriverData : IDriverData
             {
                 List<DriverModel> drivers = reader.Read<DriverModel>().ToList();
                 List<VehicleModel> vehicles = reader.Read<VehicleModel>().ToList();
-                List<DriverToVehicle> driverToVehicles = reader.Read<DriverToVehicle>().ToList();
-
-                Dictionary<int, List<VehicleModel>> results2 = driverToVehicles.GroupBy(
+                Dictionary<int, List<VehicleModel>> driverToVehicles = reader.Read<DriverToVehicle>().GroupBy(
                     d => d.DriverId,
                     d => d.VehicleId,
-                    (key, list) => new KeyValuePair<int, List<VehicleModel>>(
-                        key,
-                        vehicles.Where(v => list.Contains(v.VehicleId)).ToList()
-                      )
-                    )
-                .ToDictionary(d => d.Key, d => d.Value);
+                    (key, list) => new 
+                    {
+                        DriverId = key,
+                        Vehicles = vehicles.Where(v => list.Contains(v.VehicleId)).ToList()
+                    })
+                .ToDictionary(d => d.DriverId, d => d.Vehicles); ;
 
                 results = drivers.Select(d =>
                 {
-                    d.Vehicles = results2.GetValueOrDefault(d.DriverId);
+                    d.Vehicles = driverToVehicles.GetValueOrDefault(d.DriverId);
                     return d;
                 }).ToList();
             });
