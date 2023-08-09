@@ -7,8 +7,9 @@ namespace MinimalDriverDataAccess.Data
         Task DeleteDriver(int id);
         Task<DriverModel?> GetDriver(int id);
         Task<IEnumerable<DriverModel>> GetDrivers();
+        Task InsertALotOfDrivers();
         Task InsertDriver(DriverModel driver);
-        Task<IEnumerable<DriverModel>> LinkDrivers();
+        Task<IEnumerable<DriverWithVehiclesModel>> LinkDrivers();
         Task UpdateDriver(DriverModel driver);
     }
 }
