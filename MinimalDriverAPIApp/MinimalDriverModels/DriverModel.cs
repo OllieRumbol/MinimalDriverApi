@@ -1,4 +1,6 @@
-﻿namespace MinimalDriverModels;
+﻿using Dapper.Contrib.Extensions;
+
+namespace MinimalDriverModels;
 
 public class DriverModel
 {
@@ -11,6 +13,4 @@ public class DriverModel
     public DateTime DateOfBirth { get; set; }
 
     public string DrivingLicenceNumber { get; set; }
-
-    public List<VehicleModel> Vehicles { get; set; }
 }

@@ -64,6 +64,7 @@
     <Folder Include="dbo\StoredProcedures\Shared" />
     <Folder Include="dbo\StoredProcedures\Schedule" />
     <Folder Include="dbo\StoredProcedures\DriverToVehicle" />
+    <Folder Include="dbo\UserDefinedTables" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="dbo\Tables\Driver.sql" />
@@ -88,6 +89,8 @@
     <Build Include="dbo\StoredProcedures\Schedule\spSchedule_Update.sql" />
     <Build Include="dbo\Tables\DriverToVehicle.sql" />
     <Build Include="dbo\StoredProcedures\DriverToVehicle\spDriverToVehicle_link.sql" />
+    <Build Include="dbo\UserDefinedTables\UDT_Driver.sql" />
+    <Build Include="dbo\StoredProcedures\Driver\spDriver_InsertAll.sql" />
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="dbo\Script.PostDeployment.sql" />
