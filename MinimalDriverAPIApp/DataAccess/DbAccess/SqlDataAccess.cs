@@ -1,26 +1,23 @@
-﻿using Microsoft.Extensions.Configuration;
-using Dapper;
+﻿using Dapper;
 using System.Data;
-using System.Data.SqlClient;
 
 namespace MinimalDriverDataAccess.DbAccess;
 
 public class SqlDataAccess : ISqlDataAccess
 {
-    private readonly IConfiguration _config;
+    private readonly IDatabaseConnectionFactory _databaseConnectionFactory;
 
-    public SqlDataAccess(IConfiguration config)
+    public SqlDataAccess(IDatabaseConnectionFactory databaseConnectionFactory)
     {
-        _config = config;
+        _databaseConnectionFactory = databaseConnectionFactory;
         DefaultTypeMap.MatchNamesWithUnderscores = true;
     }
 
-    public async Task<IEnumerable<TReturnedDataModel>> LoadData<TReturnedDataModel, TParameters>(
+    public async Task<IEnumerable<TReturnedDataModel>> QueryData<TReturnedDataModel, TParameters>(
         string storedProcedure,
-        TParameters parameters,
-        string connectionId = "Default")
+        TParameters parameters)
     {
-        using IDbConnection connection = new SqlConnection(_config.GetConnectionString(connectionId));
+        using IDbConnection connection = _databaseConnectionFactory.GetConnection();
 
         return await connection.QueryAsync<TReturnedDataModel>(
             storedProcedure,
@@ -28,24 +25,22 @@ public class SqlDataAccess : ISqlDataAccess
             commandType: CommandType.StoredProcedure);
     }
 
-    public async Task SaveData<TParameters>(
+    public async Task ExecuteData<TParameters>(
         string storedProcedure,
-        TParameters parameters,
-        string connectionId = "Default")
+        TParameters parameters)
     {
-        using IDbConnection connection = new SqlConnection(_config.GetConnectionString(connectionId));
+        using IDbConnection connection = _databaseConnectionFactory.GetConnection();
 
         await connection.ExecuteAsync(storedProcedure, parameters, commandType: CommandType.StoredProcedure);
     }
 
-    public async Task<IEnumerable<TReturnedDataModel>> LoadMultipleObjectData<TFirst, TSecond, TReturnedDataModel, TParameters>(
+    public async Task<IEnumerable<TReturnedDataModel>> QueryMultipleObjectData<TFirst, TSecond, TReturnedDataModel, TParameters>(
         string storedProcedure,
         TParameters parameters,
         Func<TFirst, TSecond, TReturnedDataModel> map,
-        string connectionId = "Default",
         string splitOn = "Id")
     {
-        using IDbConnection connection = new SqlConnection(_config.GetConnectionString(connectionId));
+        using IDbConnection connection = _databaseConnectionFactory.GetConnection();
 
         var results = await connection
             .QueryAsync<TFirst, TSecond, TReturnedDataModel>(
@@ -58,14 +53,13 @@ public class SqlDataAccess : ISqlDataAccess
         return results;
     }
 
-    public async Task<IEnumerable<TReturnedDataModel>> LoadMultipleObjectData<TFirst, TSecond, TThird, TReturnedDataModel, TParameters>(
+    public async Task<IEnumerable<TReturnedDataModel>> QueryMultipleObjectData<TFirst, TSecond, TThird, TReturnedDataModel, TParameters>(
         string storedProcedure,
         TParameters parameters,
         Func<TFirst, TSecond, TThird, TReturnedDataModel> map,
-        string connectionId = "Default",
         string splitOn = "Id")
     {
-        using IDbConnection connection = new SqlConnection(_config.GetConnectionString(connectionId));
+        using IDbConnection connection = _databaseConnectionFactory.GetConnection();
 
         var results = await connection
             .QueryAsync<TFirst, TSecond, TThird, TReturnedDataModel>(
@@ -78,14 +72,13 @@ public class SqlDataAccess : ISqlDataAccess
         return results;
     }
 
-    public async Task<IEnumerable<TReturnedDataModel>> LoadMultipleObjectData<TFirst, TSecond, TThird, TForth, TReturnedDataModel, TParameters>(
+    public async Task<IEnumerable<TReturnedDataModel>> QueryMultipleObjectData<TFirst, TSecond, TThird, TForth, TReturnedDataModel, TParameters>(
         string storedProcedure,
         TParameters parameters,
         Func<TFirst, TSecond, TThird, TForth, TReturnedDataModel> map,
-        string connectionId = "Default",
         string splitOn = "Id")
     {
-        using IDbConnection connection = new SqlConnection(_config.GetConnectionString(connectionId));
+        using IDbConnection connection = _databaseConnectionFactory.GetConnection();
 
         var results = await connection
             .QueryAsync<TFirst, TSecond, TThird, TForth, TReturnedDataModel>(
@@ -98,14 +91,13 @@ public class SqlDataAccess : ISqlDataAccess
         return results;
     }
 
-    public async Task<IEnumerable<TReturnedDataModel>> LoadMultipleObjectData<TFirst, TSecond, TThird, TForth, TFifth, TReturnedDataModel, TParameters>(
+    public async Task<IEnumerable<TReturnedDataModel>> QueryMultipleObjectData<TFirst, TSecond, TThird, TForth, TFifth, TReturnedDataModel, TParameters>(
         string storedProcedure,
         TParameters parameters,
         Func<TFirst, TSecond, TThird, TForth, TFifth, TReturnedDataModel> map,
-        string connectionId = "Default",
         string splitOn = "Id")
     {
-        using IDbConnection connection = new SqlConnection(_config.GetConnectionString(connectionId));
+        using IDbConnection connection = _databaseConnectionFactory.GetConnection();
 
         var results = await connection
             .QueryAsync<TFirst, TSecond, TThird, TForth, TFifth, TReturnedDataModel>(
@@ -118,14 +110,13 @@ public class SqlDataAccess : ISqlDataAccess
         return results;
     }
 
-    public async Task<IEnumerable<TReturnedDataModel>> LoadMultipleObjectData<TFirst, TSecond, TThird, TForth, TFifth, TSixth, TReturnedDataModel, TParameters>(
+    public async Task<IEnumerable<TReturnedDataModel>> QueryMultipleObjectData<TFirst, TSecond, TThird, TForth, TFifth, TSixth, TReturnedDataModel, TParameters>(
         string storedProcedure,
         TParameters parameters,
         Func<TFirst, TSecond, TThird, TForth, TFifth, TSixth, TReturnedDataModel> map,
-        string connectionId = "Default",
         string splitOn = "Id")
     {
-        using IDbConnection connection = new SqlConnection(_config.GetConnectionString(connectionId));
+        using IDbConnection connection = _databaseConnectionFactory.GetConnection();
 
         var results = await connection
             .QueryAsync<TFirst, TSecond, TThird, TForth, TFifth, TSixth, TReturnedDataModel>(
@@ -138,14 +129,13 @@ public class SqlDataAccess : ISqlDataAccess
         return results;
     }
 
-    public async Task<IEnumerable<TReturnedDataModel>> LoadMultipleObjectData<TFirst, TSecond, TThird, TForth, TFifth, TSixth, TSeventh, TReturnedDataModel, TParameters>(
+    public async Task<IEnumerable<TReturnedDataModel>> QueryMultipleObjectData<TFirst, TSecond, TThird, TForth, TFifth, TSixth, TSeventh, TReturnedDataModel, TParameters>(
         string storedProcedure,
         TParameters parameters,
         Func<TFirst, TSecond, TThird, TForth, TFifth, TSixth, TSeventh, TReturnedDataModel> map,
-        string connectionId = "Default",
         string splitOn = "Id")
     {
-        using IDbConnection connection = new SqlConnection(_config.GetConnectionString(connectionId));
+        using IDbConnection connection = _databaseConnectionFactory.GetConnection();
 
         var results = await connection
             .QueryAsync<TFirst, TSecond, TThird, TForth, TFifth, TSixth, TSeventh, TReturnedDataModel>(
@@ -158,13 +148,12 @@ public class SqlDataAccess : ISqlDataAccess
         return results;
     }
 
-    public async Task LoadMultipleDataSets<TParameters>(
+    public async Task QueryMultipleDataSets<TParameters>(
         string storedProcedure,
         TParameters parameters,
-        Action<SqlMapper.GridReader> callback,
-        string connectionId = "Default")
+        Action<SqlMapper.GridReader> callback)
     {
-        using IDbConnection connection = new SqlConnection(_config.GetConnectionString(connectionId));
+        using IDbConnection connection = _databaseConnectionFactory.GetConnection();
 
         var results = await connection.QueryMultipleAsync(
             sql: storedProcedure,

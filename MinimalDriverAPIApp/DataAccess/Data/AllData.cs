@@ -14,7 +14,7 @@ public class AllData : IAllData
 
     public async Task<List<FullSchedule>> GetFullSchedule()
     {
-        var results = await _db.LoadMultipleObjectData<DriverModel, ScheduleModel, VehicleModel, FullSchedule, dynamic>(
+        var results = await _db.QueryMultipleObjectData<DriverModel, ScheduleModel, VehicleModel, FullSchedule, dynamic>(
             storedProcedure: "spDriverVehicleSchedule_GetAll",
             parameters: new { },
             map: (driver, schedule, vehicle) => new FullSchedule
@@ -32,7 +32,7 @@ public class AllData : IAllData
     {
         var allModel = new AllModel();
 
-        await _db.LoadMultipleDataSets(
+        await _db.QueryMultipleDataSets(
             storedProcedure: "spDriverVehicleSchedule_GetAll2",
             parameters: new { },
             (reader) =>

@@ -13,20 +13,20 @@ public class DriverData : IDriverData
         _db = db;
     }
 
-    public Task<IEnumerable<DriverModel>> GetDrivers() => _db.LoadData<DriverModel, dynamic>("dbo.spDriver_GetAll", new { });
+    public Task<IEnumerable<DriverModel>> GetDrivers() => _db.QueryData<DriverModel, dynamic>("dbo.spDriver_GetAll", new { });
 
     public async Task<DriverModel?> GetDriver(int id)
     {
-        var results = await _db.LoadData<DriverModel, dynamic>("dbo.spDriver_Get", new { Id = id });
+        var results = await _db.QueryData<DriverModel, dynamic>("dbo.spDriver_Get", new { Id = id });
 
         return results.FirstOrDefault();
     }
 
-    public Task InsertDriver(DriverModel driver) => _db.SaveData("dbo.spDriver_Insert", new { driver.FirstName, driver.LastName, driver.DateOfBirth, driver.DrivingLicenceNumber });
+    public Task InsertDriver(DriverModel driver) => _db.ExecuteData("dbo.spDriver_Insert", new { driver.FirstName, driver.LastName, driver.DateOfBirth, driver.DrivingLicenceNumber });
 
-    public Task UpdateDriver(DriverModel driver) => _db.SaveData("dbo.spDriver_Update", driver);
+    public Task UpdateDriver(DriverModel driver) => _db.ExecuteData("dbo.spDriver_Update", driver);
 
-    public Task DeleteDriver(int id) => _db.SaveData("dbo.spDriver_Delete", new { Id = id });
+    public Task DeleteDriver(int id) => _db.ExecuteData("dbo.spDriver_Delete", new { Id = id });
 
 
     public Task InsertALotOfDrivers()
@@ -59,7 +59,7 @@ public class DriverData : IDriverData
             }
         };
 
-        return _db.SaveData("dbo.spDriver_InsertAll", new { drivers = drivers.ToDataTable() });
+        return _db.ExecuteData("dbo.spDriver_InsertAll", new { drivers = drivers.ToDataTable() });
     }
 
 
@@ -67,7 +67,7 @@ public class DriverData : IDriverData
     {
         List<DriverWithVehiclesModel> results = new List<DriverWithVehiclesModel>();
 
-        await _db.LoadMultipleDataSets(
+        await _db.QueryMultipleDataSets(
             storedProcedure: "spDriverToVehicle_link",
             parameters: new { },
             (reader) =>
