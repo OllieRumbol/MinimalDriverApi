@@ -5,6 +5,7 @@ using MinimalDriverDataAccess.DbAccess;
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddSingleton<IDatabaseConnectionFactory, DatabaseConnectionFactory>();
 builder.Services.AddSingleton<ISqlDataAccess, SqlDataAccess>();
 builder.Services.AddSingleton<IDriverData, DriverData>();
 builder.Services.AddSingleton<IVehicleData, VehicleData>();

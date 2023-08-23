@@ -12,18 +12,18 @@ public class ScheduleData : IScheduleData
         _db = db;
     }
 
-    public Task<IEnumerable<ScheduleModel>> GetSchedules() => _db.LoadData<ScheduleModel, dynamic>("dbo.spSchedule_GetAll", new { });
+    public Task<IEnumerable<ScheduleModel>> GetSchedules() => _db.QueryData<ScheduleModel, dynamic>("dbo.spSchedule_GetAll", new { });
 
     public async Task<ScheduleModel?> GetSchedule(int id)
     {
-        var results = await _db.LoadData<ScheduleModel, dynamic>("dbo.spSchedule_Get", new { Id = id });
+        var results = await _db.QueryData<ScheduleModel, dynamic>("dbo.spSchedule_Get", new { Id = id });
 
         return results.FirstOrDefault();
     }
 
-    public Task InsertSchedule(ScheduleModel schedule) => _db.SaveData("dbo.spSchedule_Insert", new { schedule.StartDateTime, schedule.EndDateTime, schedule.DriverId, schedule.VehicleId, schedule.PriorityLevel });
+    public Task InsertSchedule(ScheduleModel schedule) => _db.ExecuteData("dbo.spSchedule_Insert", new { schedule.StartDateTime, schedule.EndDateTime, schedule.DriverId, schedule.VehicleId, schedule.PriorityLevel });
 
-    public Task UpdateSchedule(ScheduleModel schedule) => _db.SaveData("dbo.spSchedule_Update", schedule);
+    public Task UpdateSchedule(ScheduleModel schedule) => _db.ExecuteData("dbo.spSchedule_Update", schedule);
 
-    public Task DeleteSchedule(int id) => _db.SaveData("dbo.spSchedule_Delete", new { Id = id });
+    public Task DeleteSchedule(int id) => _db.ExecuteData("dbo.spSchedule_Delete", new { Id = id });
 }

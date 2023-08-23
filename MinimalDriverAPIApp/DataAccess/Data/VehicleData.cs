@@ -12,18 +12,18 @@ public class VehicleData : IVehicleData
         _db = db;
     }
 
-    public Task<IEnumerable<VehicleModel>> GetVehicles() => _db.LoadData<VehicleModel, dynamic>("dbo.spVehicle_GetAll", new { });
+    public Task<IEnumerable<VehicleModel>> GetVehicles() => _db.QueryData<VehicleModel, dynamic>("dbo.spVehicle_GetAll", new { });
 
     public async Task<VehicleModel?> GetVehicle(int id)
     {
-        var results = await _db.LoadData<VehicleModel, dynamic>("dbo.spVehicle_Get", new { Id = id });
+        var results = await _db.QueryData<VehicleModel, dynamic>("dbo.spVehicle_Get", new { Id = id });
 
         return results.FirstOrDefault();
     }
 
-    public Task InsertVehicle(VehicleModel vehicle) => _db.SaveData("dbo.spVehicle_Insert", new { vehicle.Registration, vehicle.Miles, vehicle.Make, vehicle.Model, vehicle.Colour });
+    public Task InsertVehicle(VehicleModel vehicle) => _db.ExecuteData("dbo.spVehicle_Insert", new { vehicle.Registration, vehicle.Miles, vehicle.Make, vehicle.Model, vehicle.Colour });
 
-    public Task UpdateVehicle(VehicleModel vehicle) => _db.SaveData("dbo.spVehicle_Update", vehicle);
+    public Task UpdateVehicle(VehicleModel vehicle) => _db.ExecuteData("dbo.spVehicle_Update", vehicle);
 
-    public Task DeleteVehicle(int id) => _db.SaveData("dbo.spVehicle_Delete", new { Id = id });
+    public Task DeleteVehicle(int id) => _db.ExecuteData("dbo.spVehicle_Delete", new { Id = id });
 }
